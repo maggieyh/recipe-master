@@ -8,5 +8,9 @@ target 'Food' do
   # Pods for Food
   pod "CloudSight", "~> 1.0"
   pod ‘AFNetworking’, ‘~> 3.0’
+  pod 'SwiftyJSON'
+  pod 'Alamofire’
+  pod 'AlamofireImage'
+  pod 'AlamofireNetworkActivityIndicator'
 
 end

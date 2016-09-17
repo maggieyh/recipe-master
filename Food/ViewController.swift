@@ -11,6 +11,8 @@ import CloudSight
 import AFNetworking
 class ViewController: UIViewController {
 
+    var query: CloudSightQuery!
+    var image = UIImage(named: "some-food")!
     override func viewDidLoad() {
         super.viewDidLoad()
 //        CloudSightConnection.sharedInstance().consumerKey = "5W7QzyWibqiVUhFTW-eoXg"
@@ -18,22 +20,40 @@ class ViewController: UIViewController {
 //        searchWithImage(UIImage(named: "Egg")!)
 //        print("fasf")
         // These code snippets use an open-source library. http://unirest.io/objective-c
-        var headers = ["Accept": "application/json"]
-        var asyncConnection = UNIRest.get({(request: UNISimpleRequest) -> Void in
-            request.url = "https://api.imagga.com/v1/tagging?url=http%3A%2F%2Fdocs.imagga.com%2Fstatic%2Fimages%2Fdocs%2Fsample%2Fjapan-605234_1280.jpg"
-            request.headers = headers
-            request.username = "your-api-key"
-            request.password = "your-api-secret"
-        }).asJsonAsync({(response: UNIHTTPJsonResponse, error: NSError) -> Void in
-            var code = response.code
-            var responseHeaders = response.headers
-            var body = response.body
-            var rawBody = response.rawBody
-        })
-
+        CloudSightConnection.sharedInstance().consumerKey = "5W7QzyWibqiVUhFTW-eoXg"
+        CloudSightConnection.sharedInstance().consumerSecret = "9ELnQ0CapgE5-6maaHxaWQ"
+        
+        print("f\n")
+        searchWithImage(image)
         
     }
 
+    func cloudSightQueryDidFinishIdentifying(query: CloudSightQuery) {
+        print("identify")
+        if query.skipReason != nil {
+            NSLog("Skipped: %@", query.skipReason)
+        }
+        else {
+            if(query.title == nil){
+                print("Eror occured")
+            }else{
+                NSLog("Identified: %@", query.title)
+                print("fff")
+            }
+        }
+    }
+    
+    func searchWithImage(image: UIImage) {
+        print("oo")
+        let deviceIdentifier: String? = "something"
+        let location = CLLocation()
+        let imageData = UIImageJPEGRepresentation(image, 0.2)
+        query = CloudSightQuery(image: imageData, atLocation: CGPoint(x: 0, y: 0), withDelegate: self, atPlacemark: location, withDeviceId: deviceIdentifier!)
+        query.start()// Start the query process
+        cloudSightQueryDidFinishIdentifying(query)
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -14,22 +14,36 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - Alamofire (3.4.1)
+  - AlamofireImage (2.4.0):
+    - Alamofire (~> 3.3)
+  - AlamofireNetworkActivityIndicator (1.0.1):
+    - Alamofire (~> 3.3)
   - BFOAuth (1.0.1)
   - CloudSight (1.0.3):
     - BFOAuth (~> 1.0)
     - RequestUtils (~> 1.1)
   - RequestUtils (1.1.2)
+  - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
+  - Alamofire
+  - AlamofireImage
+  - AlamofireNetworkActivityIndicator
   - CloudSight (~> 1.0)
+  - SwiftyJSON
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
+  AlamofireImage: 87408b652e0f5ae5fe364035f15aea8b9b24c77e
+  AlamofireNetworkActivityIndicator: 49a6e39afb947136f7b1872bae2d684957c26697
   BFOAuth: e3c2e4eaae862a89bc301ed6f292d3cd0d6a107b
   CloudSight: 7974bacb22ec2db1bfb0f0242d9be7f442a78d77
   RequestUtils: 0f04f89abca3936c6566e2f4c3ce5d252036bc89
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: f76fdde1f287aeb08451bfd3bb7c9434caa92be3
+PODFILE CHECKSUM: 616b3d270963e439b1913e7914fcf2636da27cde
 
 COCOAPODS: 1.1.0.beta.1
