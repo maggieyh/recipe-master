@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CloudSight
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -16,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        CloudSightConnection.sharedInstance().consumerKey = "5W7QzyWibqiVUhFTW-eoXg"
+        CloudSightConnection.sharedInstance().consumerSecret = "9ELnQ0CapgE5-6maaHxaWQ"
 
         return true
     }

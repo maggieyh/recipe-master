@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AFNetworking.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>BFOAuth.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,12 +32,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>35B9A0EB876F770C1335CDBCEC52AC22</key>
+		<key>1C3436CEA5C3D39764C5F54374794ECB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>95ED525BFF018F800C6C8E51B266CFDB</key>
+		<key>34201E7B36F8596A32504E7D9DEF97A7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>35B9A0EB876F770C1335CDBCEC52AC22</key>
 		<dict>
 			<key>primary</key>
 			<true/>
