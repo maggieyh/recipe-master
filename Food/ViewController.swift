@@ -8,6 +8,10 @@
 
 import UIKit
 import CloudSight
+import SwiftyJSON
+import Alamofire
+import AlamofireImage
+import AlamofireNetworkActivityIndicator
 import AFNetworking
 class ViewController: UIViewController {
 
@@ -24,7 +28,29 @@ class ViewController: UIViewController {
         CloudSightConnection.sharedInstance().consumerSecret = "9ELnQ0CapgE5-6maaHxaWQ"
         
         print("f\n")
-        searchWithImage(image)
+//        searchWithImage(image)
+        let apiToContact = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients"
+        let parameters = ["fillIngredients": "false","ingredients":"apples,flour,sugar","limitLicense":"false", "number":"5", "ranking": "2"]
+        let headers=[ "X-Mashape-Key": "mD6UrKOaehmshapH2MWlREoeTyUZp16O208jsnikP6J1BGTK6U", "Accept": "application/json"]
+        
+        Alamofire.request(.GET, apiToContact, parameters: parameters, headers: headers).validate().responseJSON() { response in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    
+                    // Do what you need to with JSON here!
+                    // The rest is all boiler plate code you'll use for API requests
+                    
+                    // This JSON file contains the same data as the tutorial example.
+                    print(json)
+                    
+                    
+                }
+            case .Failure(let error):
+                print(error)
+            }
+        }
         
     }
 
@@ -32,8 +58,7 @@ class ViewController: UIViewController {
         print("identify")
         if query.skipReason != nil {
             NSLog("Skipped: %@", query.skipReason)
-        }
-        else {
+        } else {
             if(query.title == nil){
                 print("Eror occured")
             }else{
@@ -50,7 +75,8 @@ class ViewController: UIViewController {
         let imageData = UIImageJPEGRepresentation(image, 0.2)
         query = CloudSightQuery(image: imageData, atLocation: CGPoint(x: 0, y: 0), withDelegate: self, atPlacemark: location, withDeviceId: deviceIdentifier!)
         query.start()// Start the query process
-        cloudSightQueryDidFinishIdentifying(query)
+//        cloudSightQueryDidFinishIdentifying(query)
+        
         
     }
     
